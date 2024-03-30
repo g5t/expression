@@ -56,8 +56,14 @@ class Agent(base_agent.BaseAgent):
         else:
             options = [
                 #  {'plus5': 3, 'plus10': 3, 'div10': 3, 'plus1': 7, 'div5': 2, 'mult10': 3, 'mult3': 5},
+                # 15 of 15 winners:
                 {'plus5': 5, 'plus10': 4, 'div10': 0, 'plus1': 2, 'div5': 0, 'mult10': 4, 'mult3': 0},
-                {'plus5': 5, 'plus10': 1, 'div10': 1, 'plus1': 2, 'div5': 1, 'mult10': 4, 'mult3': 1}
+                {'plus5': 5, 'plus10': 1, 'div10': 1, 'plus1': 2, 'div5': 1, 'mult10': 4, 'mult3': 1},
+                # 140+ of 150 winners:
+                {'plus5': 5, 'plus10': 3, 'div10': 1, 'plus1': 1, 'div5': 0, 'mult10': 3, 'mult3': 2},
+                # 14 of 15 vs. Jankas
+                {'plus5': 5, 'plus10': 3, 'div10': 1, 'plus1': 1, 'div5': 2, 'mult10': 3, 'mult3': 0},
+
             ]
             self.deck = options[random.randint(0, len(options) - 1)]
 
