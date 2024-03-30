@@ -2,6 +2,7 @@ import random
 import copy
 
 import pyglet
+from pyglet.window import key
 from pyglet.window import mouse
 
 from . import util
@@ -156,6 +157,8 @@ class ActiveCard(pyglet.sprite.Sprite):
         self.scale_goal = 0.25
         self.scale_speed = 0.15
 
+        self.scale_goal_saved = None
+
         self.my_speed = 200
 
         self.target_pos = None
@@ -176,6 +179,17 @@ class ActiveCard(pyglet.sprite.Sprite):
         half_width = self.width / 2
         half_height = self.height / 2
         if self.x + half_width > x > self.x - half_width and self.y + half_height > y > self.y - half_height:
+
+            if modifier & key.MOD_SHIFT:
+                if self.scale_goal_saved is None:
+                    # not highlighted
+                    self.scale_goal_saved = self.scale_goal
+                    self.scale_goal = 1.5*self.scale_goal
+
+                else:
+                    # highlighted, go back
+                    self.scale_goal = self.scale_goal_saved
+                    self.scale_goal_saved = None
 
             self.card_pressed = True
             return True
