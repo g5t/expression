@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import random
 from game import base_agent
 from game import helpers
@@ -21,7 +23,7 @@ def one_set(plus_starts: bool, plus, rest):
         return [[*r, plus[0]] for r in permutations(rest)]
 
 
-def possible(checker, operator: str, budget: int, cards: list[Card]) -> list[list[Card]]:
+def possible(checker, operator: str, budget: int, cards):
     from itertools import combinations, product
     plus = [c for c in cards if c.operator == '+']
     rest = [c for c in cards if c.operator == ('*' if operator == '+' else operator)]
@@ -105,6 +107,7 @@ def fake_checker(fixed, current):
         return l+c
 
     return checker
+
 
 def test_possible():
     c1 = Card('+', 1, 1)
