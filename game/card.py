@@ -39,6 +39,9 @@ class Card:
             return cards_equal(self, other)
         return False
 
+    def __hash__(self):
+        return hash(str(self))
+
     def __repr__(self):
         return self.return_print()
 
